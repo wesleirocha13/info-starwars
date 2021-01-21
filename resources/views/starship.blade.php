@@ -23,7 +23,13 @@
                         <td>{{$starship['name']}}</td>
                         <td>{{$starship['model']}}</td>
                         <td>{{$starship['manufacturer']}}</td>
-                        <td><a href="">Detalhes</a></td>
+                        <td>
+                            <form action="{{ route('starship/show') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="url" value="{{ $starship['url'] }}">
+                                <button type="submmit" class="btn btn-link">Detalhes</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

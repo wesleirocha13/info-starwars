@@ -23,7 +23,13 @@
                         <td>{{$planet['name']}}</td>
                         <td>{{$planet['rotation_period']}}</td>
                         <td>{{$planet['orbital_period']}}</td>
-                        <td><a href="">Detalhes</a></td>
+                        <td>
+                            <form action="{{ route('planet/show') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="url" value="{{ $planet['url'] }}">
+                                <button type="submmit" class="btn btn-link">Detalhes</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

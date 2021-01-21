@@ -24,6 +24,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/planets', 'PlanetController@index')->name('planets');
 Route::get('/starships', 'StarshipController@index')->name('starships');
 
-/*Route::get('/planets', function () {
-    return view('planet');
-})->name('planets');*/
+Route::post('/planets/show', 'PlanetController@show')->name('planet/show');
+Route::post('/starships/show', 'StarshipController@show')->name('starship/show');

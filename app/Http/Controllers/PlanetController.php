@@ -28,4 +28,17 @@ class PlanetController extends Controller
             'planets' => $arrayResponse
         ]);
     }
+
+    /**
+     * @param Illuminate\Http\Request $request
+     * @return Illuminate\Http\Response;
+     */
+
+    public function show(Request $request)
+    { 
+        $response = Http::get($request->url)->json();
+        return view('planetDetails', [
+            'planet' => $response
+        ]);
+    }
 }

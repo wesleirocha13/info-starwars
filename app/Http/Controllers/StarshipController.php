@@ -28,4 +28,12 @@ class StarshipController extends Controller
             'starships' => $arrayResponse
         ]);
     }
+
+    public function show(Request $request)
+    { 
+        $response = Http::get($request->url)->json();
+        return view('starshipDetails', [
+            'starship' => $response
+        ]);
+    }
 }
