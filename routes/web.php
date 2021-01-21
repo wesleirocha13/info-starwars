@@ -14,9 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome2');
+    return view('welcome');
 })->name('welcome');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/planets', 'PlanetController@index')->name('planets');
+Route::get('/starships', 'StarshipController@index')->name('starships');
+
+/*Route::get('/planets', function () {
+    return view('planet');
+})->name('planets');*/
