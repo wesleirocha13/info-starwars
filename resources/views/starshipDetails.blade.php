@@ -6,7 +6,7 @@
         </a>
     </div>
     <div class="container d-flex justify-content-center">
-        <div class="card border-secondary mt-3   mb-5 w-50">
+        <div class="card border-secondary mt-3 mb-5 " style="width: 80%">  
             <div class="card-header text-center">
               <h4>{{$starship['name']}}</h4>
             </div>
@@ -85,8 +85,12 @@
                 </div>       
             </div>
             <div class="text-center pb-3">
-                <a href="#" class="btn btn-primary" style="width: 150px;">Salvar</a>
+                <form action="{{ route('starship/store') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="starship" value="{{$starship['url']}}">
+                    <button type="submit" class="btn btn-primary" style="width: 150px">Salvar</button>
+                </form>
             </div>
           </div>
-    </div>
+    </div> 
 @endsection

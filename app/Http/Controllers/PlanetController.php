@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Http;
+use App\Models\Planet;
 
 class PlanetController extends Controller
 {
     public function index()
     {
-
         $response = Http::get('https://swapi.dev/api/planets/')->json();
         $arrayResponse = [];
         
@@ -22,17 +22,10 @@ class PlanetController extends Controller
             $response = Http::get($response['next'])->json(); 
         }
 
-        //dd($arrayResponse);
-
         return view('planet', [
             'planets' => $arrayResponse
         ]);
     }
-
-    /**
-     * @param Illuminate\Http\Request $request
-     * @return Illuminate\Http\Response;
-     */
 
     public function show(Request $request)
     { 
@@ -40,5 +33,30 @@ class PlanetController extends Controller
         return view('planetDetails', [
             'planet' => $response
         ]);
+    }
+
+    public function store(Request $request)
+    {
+        $response = Http::get($request->planet)->json();
+        $planet = new Planet;
+        $planet->name = $response['name'];
+        $planet->rotation_period = $response['rotation_period'];
+        $planet->orbital_period = $response['orbital_period'];
+        $planet->diameter = $response['diameter'];
+        $planet->climate = $response['climate'];
+        $planet->gravity = $response['gravity'];
+        $planet->terrain = $response['terrain'];
+        $planet->surface_water = $response['surface_water'];
+        $planet->population = $response['population'];
+        $planet->url = $response['url'];
+
+        try {
+            $planet->save();
+            return redirect()->route('planets')->with('success', 'Planeta salvo com sucesso!');;
+        } catch (\Illuminate\Database\QueryException $e) {
+            if($e->getCode() === '23000') {
+                return redirect()->route('planets')->with('failed', 'Ops! Esse planeta já havia sido salvo.');
+            }
+        }
     }
 }

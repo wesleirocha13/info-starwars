@@ -15,10 +15,19 @@ class CreateStarshipsTable extends Migration
     {
         Schema::create('starships', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();;
             $table->string('model');
             $table->string('manufacturer');
-            $table->int('');
+            $table->string('cost_in_credits');
+            $table->string('length');
+            $table->string('max_atmosphering_speed');
+            $table->string('crew');
+            $table->string('passengers');
+            $table->string('cargo_capacity');
+            $table->string('consumables');
+            $table->string('hyperdrive_rating');
+            $table->string('MGLT');
+            $table->string('starship_class');
             $table->timestamps();
         });
     }

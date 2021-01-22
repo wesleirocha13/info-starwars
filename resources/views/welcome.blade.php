@@ -8,7 +8,7 @@
             </div>
             <div class="card-body pt-4">
               <h5 class="card-title">Bem vindo ao INFO-Star Wars!</h5>
-              <p class="card-text pt-3 lead">Aqui você poderá ver vários curiosidades sobre os planetas e naves presentes em toda a saga!</p>
+              <p class="card-text pt-3 lead">Aqui você poderá ver várias curiosidades sobre os planetas e naves presentes em toda a saga!</p>
               <p class="card-text lead">Para acessar o conteúdo faça login ou cadastre-se.</p>
               <div class="pt-4">
                 <a href="{{ route('login') }}" class="btn btn-primary" style="width: 150px;">Fazer Login</a>

@@ -26,3 +26,8 @@ Route::get('/starships', 'StarshipController@index')->name('starships');
 
 Route::post('/planets/show', 'PlanetController@show')->name('planet/show');
 Route::post('/starships/show', 'StarshipController@show')->name('starship/show');
+
+Route::post('/planets/store', 'PlanetController@store')->name('planet/store');
+Route::post('/starships/store', 'StarshipController@store')->name('starship/store');
+
+Route::get('/saved', 'SavedController@index')->name('saved');

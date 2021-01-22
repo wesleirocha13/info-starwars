@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFO Star Wars</title>
+    <title>INFO-Star Wars</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -24,10 +24,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                <a class="nav-link" href="{{ route('planets') }}">Planetas</a>
+                    <a class="nav-link" href="{{ route('planets') }}">Planetas</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="{{ route('starships') }}">Naves</a>
+                    <a class="nav-link" href="{{ route('starships') }}">Naves</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('saved') }}">Salvos</a>
                 </li>
             </ul>
             <ul class="navbar-nav mr">
