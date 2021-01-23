@@ -31,3 +31,6 @@ Route::post('/planets/store', 'PlanetController@store')->name('planet/store');
 Route::post('/starships/store', 'StarshipController@store')->name('starship/store');
 
 Route::get('/saved', 'SavedController@index')->name('saved');
+
+Route::post('/planet/destroy', 'PlanetController@destroy')->name('planet/destroy');
+Route::post('/starships/destroy', 'StarshipController@destroy')->name('starships/destroy');

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center pb-4">
         <div class="col-md-8">
             <div class="card mt-5">
                 <div class="card-header text-center"><h4>Cadastre-se</h4></div>

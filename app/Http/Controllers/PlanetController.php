@@ -59,4 +59,18 @@ class PlanetController extends Controller
             }
         }
     }
+
+    public function destroy(Request $request)
+    {
+        $planet = new Planet;
+        $response = $planet->where('id', $request->id)->first();
+        if(!$response)
+            return redirect()->route('saved')->with('failed', 'Ops! Ocorreu um erro, tente novamente.');
+        
+        if($response->delete()){
+            return redirect()->route('saved')->with('success', 'Planeta removido com sucesso!');
+        }else{
+            return redirect()->route('saved')->with('failed', 'Ops! Ocorreu um erro, tente novamente.');
+        }
+    }
 }

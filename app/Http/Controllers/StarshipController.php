@@ -66,4 +66,18 @@ class StarshipController extends Controller
         }
         
     }
+
+    public function destroy(Request $request)
+    {
+        $starship = new Starships;
+        $response = $starship->where('id', $request->id)->first();
+        if(!$response)
+            return redirect()->route('saved')->with('failed', 'Ops! Ocorreu um erro, tente novamente.');
+        
+        if($response->delete()){
+            return redirect()->route('saved')->with('success', 'Nave removida com sucesso!');
+        }else{
+            return redirect()->route('saved')->with('failed', 'Ops! Ocorreu um erro, tente novamente.');
+        }
+    }
 }

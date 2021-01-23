@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -49,13 +49,9 @@
         @endauth
       </nav>
     @yield('content')
-    <footer class="bg-dark text-center w-100" style="position: static; bottom:0; left:0;">
-        <!-- Copyright -->
-        <div class="text-center p-3 text-light">
-          © 2020 Copyright:
-          <a class="text-light" href="https://github.com/wesleirocha13" target="_blank">WRS Development</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+
 </body>
 </html>
+<script>
+    feather.replace()
+</script>

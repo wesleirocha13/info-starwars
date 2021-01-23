@@ -1,6 +1,49 @@
 @extends('layouts.global')
 @section('content')
-<div class="container pb-4">
+<div class="container pb-5">
+    @if (Session::has('success'))
+            <script>
+                $(document).ready(function() {
+                    $('#modalSuccess').modal('show');
+                })
+            </script>
+            <div id="modalSuccess" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="false">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-success">Sucesso:</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-success">
+                            <p><strong>{{ session()->get('success') }}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @elseif (Session::has('failed'))
+            <script>
+                $(document).ready(function() {
+                    $('#modalError').modal('show');
+                })
+            </script>
+            <div id="modalError" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="false">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-danger">Erro:</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-danger">
+                            <p><strong>{{ session()->get('failed') }}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>     
+        @endif
     <h1 class="display-4 text-center mt-3 mb-4">Salvos</h1>
     <div id="accordion">
         <div class="card">
@@ -15,12 +58,25 @@
                 </ul>
             </div>
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <h4 class="text-center mt-3 font-italic"><u>Planetas</u></h4>
                 <div class="card-body">
                     @foreach ($planets as $planet)
                         <div class="d-flex justify-content-center">
                             <div class="card border-secondary mb-3" style="width: 80%">
-                                <div class="card-header text-center">
-                                <h4>{{$planet['name']}}</h4>
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col"></div>
+                                        <div class="col text-center">
+                                            <h4>{{$planet['name']}}</h4>
+                                        </div>
+                                        <div class="col text-right">
+                                            <form id="destroy-form" action="{{ route('planet/destroy') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$planet['id']}}">
+                                                <button class="btn btn-danger btn-sm text-right" title="Excluir"><i data-feather="trash-2"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>                                    
                                 </div>
                                 <div class="card-body text-left pl-5">
                                     <div class="row">
@@ -78,12 +134,25 @@
                 </div>
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <h4 class="text-center mt-3 font-italic"><u>Naves</u></h4>
                 <div class="card-body">
                     @foreach ($starships as $starship)
                         <div class="d-flex justify-content-center">
                             <div class="card border-secondary mb-3" style="width: 80%">  
-                                <div class="card-header text-center">
-                                <h4>{{$starship['name']}}</h4>
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col"></div>
+                                        <div class="col text-center">
+                                            <h4>{{$starship['name']}}</h4>
+                                        </div>
+                                        <div class="col text-right">
+                                            <form id="destroy-form" action="{{ route('starships/destroy') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{$starship['id']}}">
+                                                <button class="btn btn-danger btn-sm text-right" title="Excluir"><i data-feather="trash-2"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>                                    
                                 </div>
                                 <div class="card-body text-left pl-5">
                                     <div class="row">

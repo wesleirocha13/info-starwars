@@ -3,7 +3,7 @@
     $count = 1;
 @endphp
 @section('content')
-    <div class="container">
+    <div class="container pb-5">
         @if (Session::has('success'))
             <script>
                 $(document).ready(function() {
